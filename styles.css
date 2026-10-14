@@ -50,6 +50,13 @@ body {
   font: 15px/1.6 "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
 
+:lang(ar) body, body:lang(ar) {
+  font-family: "IBM Plex Sans Arabic", "Inter", system-ui, sans-serif;
+  line-height: 1.75;
+}
+/* Arabic letters must stay joined: no letter-spacing or uppercase tricks */
+:lang(ar) h2 { letter-spacing: 0; font-size: 15px; }
+
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
@@ -62,9 +69,22 @@ svg {
 
 /* Toolbar */
 .toolbar {
-  position: fixed; top: 16px; right: 16px; z-index: 10;
+  position: fixed; top: 16px; inset-inline-end: 16px; z-index: 10;
   display: flex; gap: 8px;
 }
+.lang-switch {
+  display: inline-flex; height: 38px; padding: 3px;
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+.lang-switch button {
+  min-width: 36px; padding: 0 8px; border: 0; border-radius: 7px;
+  background: transparent; color: var(--muted);
+  font: inherit; font-size: 13px; font-weight: 600; cursor: pointer;
+}
+.lang-switch button:hover { color: var(--accent); }
+.lang-switch button[aria-pressed="true"] { background: var(--accent-soft); color: var(--accent); }
+.lang-switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .btn {
   display: inline-flex; align-items: center; gap: 6px;
   height: 38px; padding: 0 12px;
@@ -149,12 +169,12 @@ p:last-child { margin-bottom: 0; }
 .timeline { list-style: none; margin: 0; padding: 0; }
 .timeline > .entry {
   position: relative;
-  padding-left: 22px;
-  border-left: 2px solid var(--border);
+  padding-inline-start: 22px;
+  border-inline-start: 2px solid var(--border);
 }
 .timeline > .entry + .entry { margin-top: 22px; }
 .timeline > .entry::before {
-  content: ""; position: absolute; left: -7px; top: 6px;
+  content: ""; position: absolute; inset-inline-start: -7px; top: 6px;
   width: 12px; height: 12px; border-radius: 50%;
   background: var(--surface); border: 2px solid var(--accent);
 }
@@ -170,11 +190,11 @@ p:last-child { margin-bottom: 0; }
 .org { margin: 2px 0 8px; color: var(--accent); font-weight: 500; font-size: 14px; }
 .lead { color: var(--muted); }
 
-.entry ul { margin: 0; padding-left: 18px; }
+.entry ul { margin: 0; padding-inline-start: 18px; }
 .entry li { margin: 3px 0; }
 .entry li::marker { color: var(--accent); }
 
-.compact { margin: 0; padding-left: 18px; font-size: 14px; }
+.compact { margin: 0; padding-inline-start: 18px; font-size: 14px; }
 .compact li { margin: 4px 0; }
 .compact li::marker { color: var(--accent); }
 
@@ -184,6 +204,8 @@ p:last-child { margin-bottom: 0; }
   font-size: 13px; padding: 3px 10px; border-radius: 8px;
   background: var(--accent-soft); color: var(--accent); font-weight: 500;
 }
+/* Each tag picks its own direction, so "C++" stays "C++" in Arabic */
+.tags li { unicode-bidi: plaintext; }
 .tags-muted li { background: var(--tag-bg); color: var(--text); font-weight: 400; }
 
 /* Languages */
@@ -225,8 +247,9 @@ p:last-child { margin-bottom: 0; }
   .role { font-size: 11pt; margin: 2px 0 6px; }
   .grid { grid-template-columns: minmax(0, 1fr) 62mm; gap: 8mm; margin-top: 10px; }
   .main, .side { gap: 12px; }
-  .timeline { padding-left: 7px; }
+  .timeline { padding-inline-start: 7px; }
   h2 { margin-bottom: 6px; font-size: 9pt; }
+  :lang(ar) h2 { font-size: 10pt; }
   h3 { font-size: 10.5pt; }
   .tags li { font-size: 8pt; padding: 1px 6px; }
   .compact, .langs div { font-size: 9pt; }

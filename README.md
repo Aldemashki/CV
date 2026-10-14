@@ -2,13 +2,19 @@
 
 Statische Lebenslauf-Website (HTML/CSS/JS, kein Build-Schritt).
 
-- `index.html` – Inhalte (Profil, Erfahrung, Studium, Stack, Sprachen)
+- `index.html` – Inhalte auf Deutsch (Standard)
+- `i18n.js` – Übersetzungen Englisch und Arabisch (Arabisch von rechts nach links)
 - `styles.css` – Layout, Hell-/Dunkelmodus, Druck-Layout (A4)
 - `script.js` – Theme-Umschalter und PDF-Button
 
 ## Lokal ansehen
 
 `index.html` im Browser öffnen.
+
+## Sprachen
+
+Umschalter oben (DE / EN / ع). Direktlinks: `?lang=en`, `?lang=ar`.
+Bei Textänderungen in `index.html` den gleichen Schlüssel (`data-i18n`) in `i18n.js` anpassen.
 
 ## PDF erstellen
 
