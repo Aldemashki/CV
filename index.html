@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de">
+<html lang="de" dir="ltr">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,24 +9,37 @@
   <meta property="og:description" content="Java/Spring Boot Backend, Angular Frontend, DMS/IMS, Microservices, CI/CD.">
   <meta property="og:type" content="profile">
   <script>
-    // Apply saved theme before first paint to avoid a flash
+    // Apply saved theme and language before first paint to avoid a flash
     try {
       var t = localStorage.getItem('theme');
       if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
     } catch (e) {}
+    (function () {
+      var l = new URLSearchParams(location.search).get('lang');
+      if (!l) { try { l = localStorage.getItem('lang'); } catch (e) {} }
+      if (l === 'en' || l === 'ar') {
+        document.documentElement.lang = l;
+        document.documentElement.dir = l === 'ar' ? 'rtl' : 'ltr';
+      }
+    })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="toolbar no-print">
-    <button id="print-btn" class="btn" type="button" aria-label="Als PDF speichern">
+    <div class="lang-switch" role="group" aria-label="Sprache / Language / اللغة">
+      <button type="button" data-lang="de" lang="de">DE</button>
+      <button type="button" data-lang="en" lang="en">EN</button>
+      <button type="button" data-lang="ar" lang="ar">ع</button>
+    </div>
+    <button id="print-btn" class="btn" type="button" data-i18n-aria="ui_print" aria-label="Als PDF speichern">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6M6 18H4a1 1 0 0 1-1-1v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6a1 1 0 0 1-1 1h-2M6 14h12v7H6z"/></svg>
       <span>PDF</span>
     </button>
-    <button id="theme-btn" class="btn" type="button" aria-label="Farbschema wechseln">
+    <button id="theme-btn" class="btn" type="button" data-i18n-aria="ui_theme" aria-label="Farbschema wechseln">
       <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
     </button>
@@ -36,12 +49,12 @@
     <header class="hero">
       <div class="avatar" aria-hidden="true">AA</div>
       <div>
-        <h1>Abdulrahman Aldemashki</h1>
-        <p class="role">Senior Full Stack Entwickler · Java · Spring Boot · Angular</p>
+        <h1 lang="en" dir="ltr">Abdulrahman Aldemashki</h1>
+        <p class="role" data-i18n="role">Senior Full Stack Entwickler · Java · Spring Boot · Angular</p>
         <ul class="contact">
           <li>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
-            Wuppertal, Deutschland
+            <span data-i18n="location">Wuppertal, Deutschland</span>
           </li>
         </ul>
       </div>
@@ -50,15 +63,15 @@
     <div class="grid">
       <div class="main">
         <section aria-labelledby="profil">
-          <h2 id="profil">Profil</h2>
-          <p>
+          <h2 id="profil" data-i18n="h_profile">Profil</h2>
+          <p data-i18n="profile_1">
             Ich bin ein engagierter Softwareentwickler mit über 4 Jahren Erfahrung in der Konzeption,
             Entwicklung und Weiterentwicklung von Web- und Unternehmensanwendungen. Mein Schwerpunkt liegt
             in der Java-basierten Backend-Entwicklung mit Spring Boot sowie in der Umsetzung moderner
             Frontend-Lösungen mit Angular. Erfahrungen konnte ich insbesondere in der Entwicklung und
             Optimierung von Dokumentenmanagementsystemen (DMS) und Inputmanagementsystemen (IMS) sammeln.
           </p>
-          <p>
+          <p data-i18n="profile_2">
             Ich arbeite strukturiert, lösungsorientiert und bringe eine hohe Teamfähigkeit mit –
             insbesondere in agilen Entwicklungsumgebungen wie Scrum. Dabei lege ich großen Wert auf
             sauberen Code, Skalierbarkeit und Wartbarkeit der Anwendungen.
@@ -66,59 +79,59 @@
         </section>
 
         <section aria-labelledby="erfahrung">
-          <h2 id="erfahrung">Praxiserfahrung</h2>
+          <h2 id="erfahrung" data-i18n="h_experience">Praxiserfahrung</h2>
           <ol class="timeline">
             <li class="entry">
               <div class="entry-head">
-                <h3>Senior Full Stack Entwickler</h3>
-                <span class="date">seit März 2023</span>
+                <h3 data-i18n="job1_title">Senior Full Stack Entwickler</h3>
+                <span class="date" data-i18n="job1_date">seit März 2023</span>
               </div>
               <p class="org">BarmeniaGothaer</p>
-              <p class="lead">Umsetzung eines Input- und Dokumentenmanagementsystems (IMS/DMS).</p>
+              <p class="lead" data-i18n="job1_lead">Umsetzung eines Input- und Dokumentenmanagementsystems (IMS/DMS).</p>
               <ul>
-                <li>Entwicklung des Backends mit Java und Spring Boot (Version 2 &amp; 3)</li>
-                <li>Entwicklung des Frontends mit Angular 18 – 21</li>
-                <li>Schreiben und Pflege von Unit Tests im Frontend und Backend</li>
-                <li>CI/CD-Deployment mittels Jenkins, Rancher und Build-Pipelines</li>
-                <li>Integration von Camunda zur Prozessmodellierung und Automatisierung</li>
-                <li>Entwicklung in einer Microservices-Architektur mit Docker und Kubernetes</li>
-                <li>Erstellung und Verwaltung von Shell-Skripten auf Linux-Hosts</li>
-                <li>Einsatz von Control-M zur Jobsteuerung und -überwachung</li>
-                <li>System-Monitoring mit CheckMK und Instana</li>
-                <li>KI-Klassifikationssystem mit gezieltem Einsatz von Python</li>
+                <li data-i18n="job1_b1">Entwicklung des Backends mit Java und Spring Boot (Version 2 &amp; 3)</li>
+                <li data-i18n="job1_b2">Entwicklung des Frontends mit Angular 18 – 21</li>
+                <li data-i18n="job1_b3">Schreiben und Pflege von Unit Tests im Frontend und Backend</li>
+                <li data-i18n="job1_b4">CI/CD-Deployment mittels Jenkins, Rancher und Build-Pipelines</li>
+                <li data-i18n="job1_b5">Integration von Camunda zur Prozessmodellierung und Automatisierung</li>
+                <li data-i18n="job1_b6">Entwicklung in einer Microservices-Architektur mit Docker und Kubernetes</li>
+                <li data-i18n="job1_b7">Erstellung und Verwaltung von Shell-Skripten auf Linux-Hosts</li>
+                <li data-i18n="job1_b8">Einsatz von Control-M zur Jobsteuerung und -überwachung</li>
+                <li data-i18n="job1_b9">System-Monitoring mit CheckMK und Instana</li>
+                <li data-i18n="job1_b10">KI-Klassifikationssystem mit gezieltem Einsatz von Python</li>
               </ul>
             </li>
             <li class="entry">
               <div class="entry-head">
-                <h3>Java-Entwickler</h3>
-                <span class="date">ab Mai 2022</span>
+                <h3 data-i18n="job2_title">Java-Entwickler</h3>
+                <span class="date" data-i18n="job2_date">ab Mai 2022</span>
               </div>
-              <p class="org">Brunel · Arcusoft-Projekt</p>
+              <p class="org" data-i18n="job2_org">Brunel · Arcusoft-Projekt</p>
               <ul>
-                <li>Web-Applikations-Entwicklung</li>
-                <li>Entwicklung von Dokumentenmanagementsystemen</li>
-                <li>Programmieren mit Java und Java Swing</li>
-                <li>Entwicklung von Desktop- und Webanwendungen</li>
-                <li>Fortlaufende Optimierung der Anwendung</li>
-                <li>Analyse und Behebung von Bugs</li>
-                <li>Aufsetzen und Durchführung von Softwaretests</li>
-                <li>Testen der Release-Versionen</li>
+                <li data-i18n="job2_b1">Web-Applikations-Entwicklung</li>
+                <li data-i18n="job2_b2">Entwicklung von Dokumentenmanagementsystemen</li>
+                <li data-i18n="job2_b3">Programmieren mit Java und Java Swing</li>
+                <li data-i18n="job2_b4">Entwicklung von Desktop- und Webanwendungen</li>
+                <li data-i18n="job2_b5">Fortlaufende Optimierung der Anwendung</li>
+                <li data-i18n="job2_b6">Analyse und Behebung von Bugs</li>
+                <li data-i18n="job2_b7">Aufsetzen und Durchführung von Softwaretests</li>
+                <li data-i18n="job2_b8">Testen der Release-Versionen</li>
               </ul>
             </li>
           </ol>
         </section>
 
         <section aria-labelledby="thesis">
-          <h2 id="thesis">Bachelorarbeit</h2>
+          <h2 id="thesis" data-i18n="h_thesis">Bachelorarbeit</h2>
           <article class="entry">
-            <h3>Methoden der Verbesserung von Mikrofonaufnahmen durch künstliche Intelligenz</h3>
+            <h3 data-i18n="thesis_title">Methoden der Verbesserung von Mikrofonaufnahmen durch künstliche Intelligenz</h3>
             <ul>
-              <li>Einsatz von künstlicher Intelligenz, insbesondere Machine und Deep Learning</li>
-              <li>Studieren der Lerntypen, insbesondere Supervised und Unsupervised Learning</li>
-              <li>Grundlagen von Neuronalen Netzen, insbesondere Convolutional Neural Networks</li>
-              <li>Python-Bibliotheken: numpy, matplotlib, scipy, sklearn, pandas, tensorflow und librosa</li>
-              <li>Verstehen und Verarbeiten von Daten wie Bildern und Signalen</li>
-              <li>Implementierung von Autoencodern und Denoising Autoencodern</li>
+              <li data-i18n="thesis_b1">Einsatz von künstlicher Intelligenz, insbesondere Machine und Deep Learning</li>
+              <li data-i18n="thesis_b2">Studieren der Lerntypen, insbesondere Supervised und Unsupervised Learning</li>
+              <li data-i18n="thesis_b3">Grundlagen von Neuronalen Netzen, insbesondere Convolutional Neural Networks</li>
+              <li data-i18n="thesis_b4">Python-Bibliotheken: numpy, matplotlib, scipy, sklearn, pandas, tensorflow und librosa</li>
+              <li data-i18n="thesis_b5">Verstehen und Verarbeiten von Daten wie Bildern und Signalen</li>
+              <li data-i18n="thesis_b6">Implementierung von Autoencodern und Denoising Autoencodern</li>
             </ul>
           </article>
         </section>
@@ -126,8 +139,8 @@
 
       <aside class="side">
         <section aria-labelledby="stack">
-          <h2 id="stack">Stack</h2>
-          <h3 class="sub">Schwerpunkte</h3>
+          <h2 id="stack" data-i18n="h_stack">Stack</h2>
+          <h3 class="sub" data-i18n="stack_focus">Schwerpunkte</h3>
           <ul class="tags">
             <li>Angular</li><li>TypeScript</li><li>JavaScript</li><li>HTML</li><li>SCSS</li><li>XML</li>
             <li>Java</li><li>Spring</li><li>Spring Boot</li><li>Spring MVC</li><li>JEE</li>
@@ -137,51 +150,52 @@
             <li>Jasmine</li><li>NgMocks</li><li>JUnit</li><li>Mockito</li>
             <li>UML</li><li>Design Patterns</li><li>Analysis Patterns</li>
           </ul>
-          <h3 class="sub">Erfahren</h3>
+          <h3 class="sub" data-i18n="stack_experienced">Erfahren</h3>
           <ul class="tags tags-muted">
             <li>Spring Cloud</li><li>Spring AI</li><li>JavaFX</li><li>Java Swing</li>
             <li>C++</li><li>C</li><li>Python</li><li>Socket-Programming (TCP/UDP)</li>
-            <li>Künstliche Intelligenz</li><li>Machine Learning</li><li>Deep Learning</li>
-            <li>Shell-Skripte (Linux)</li><li>Camunda</li><li>Control-M</li><li>CI/CD</li>
+            <li data-i18n="tag_ai">Künstliche Intelligenz</li><li data-i18n="tag_ml">Machine Learning</li><li data-i18n="tag_dl">Deep Learning</li>
+            <li data-i18n="tag_shell">Shell-Skripte (Linux)</li><li>Camunda</li><li>Control-M</li><li>CI/CD</li>
           </ul>
         </section>
 
         <section aria-labelledby="studium">
-          <h2 id="studium">Studium</h2>
+          <h2 id="studium" data-i18n="h_education">Studium</h2>
           <div class="entry">
-            <h3>B.Sc. Informationstechnologie</h3>
-            <p class="org">Bergische Universität Wuppertal</p>
+            <h3 data-i18n="degree">B.Sc. Informationstechnologie</h3>
+            <p class="org" data-i18n="university">Bergische Universität Wuppertal</p>
             <ul class="compact">
-              <li>Schwerpunkt: Information Science (IS)</li>
-              <li>Vertiefung: Hardware-/Software-/Internet-Technologie</li>
-              <li>Vertiefung: Elektronik</li>
+              <li data-i18n="edu_b1">Schwerpunkt: Information Science (IS)</li>
+              <li data-i18n="edu_b2">Vertiefung: Hardware-/Software-/Internet-Technologie</li>
+              <li data-i18n="edu_b3">Vertiefung: Elektronik</li>
             </ul>
           </div>
         </section>
 
         <section aria-labelledby="zertifikate">
-          <h2 id="zertifikate">Bescheinigungen</h2>
+          <h2 id="zertifikate" data-i18n="h_certs">Bescheinigungen</h2>
           <ul class="compact">
-            <li>Spring Data JPA Performance- &amp; Optimierungstraining</li>
-            <li>W-JAX 2024 Konferenz, München – Cloud, Kubernetes, Generative AI, Microservices, Angular &amp; Spring</li>
-            <li>Deutschlandstipendium – Bergische Universität Wuppertal</li>
+            <li data-i18n="cert_1">Spring Data JPA Performance- &amp; Optimierungstraining</li>
+            <li data-i18n="cert_2">W-JAX 2024 Konferenz, München – Cloud, Kubernetes, Generative AI, Microservices, Angular &amp; Spring</li>
+            <li data-i18n="cert_3">Deutschlandstipendium – Bergische Universität Wuppertal</li>
           </ul>
         </section>
 
         <section aria-labelledby="sprachen">
-          <h2 id="sprachen">Sprachen</h2>
+          <h2 id="sprachen" data-i18n="h_languages">Sprachen</h2>
           <dl class="langs">
-            <div><dt>Arabisch</dt><dd>Muttersprache</dd></div>
-            <div><dt>Deutsch</dt><dd>C1</dd></div>
-            <div><dt>Englisch</dt><dd>C1</dd></div>
+            <div><dt data-i18n="lang_ar">Arabisch</dt><dd data-i18n="lang_native">Muttersprache</dd></div>
+            <div><dt data-i18n="lang_de">Deutsch</dt><dd>C1</dd></div>
+            <div><dt data-i18n="lang_en">Englisch</dt><dd>C1</dd></div>
           </dl>
         </section>
       </aside>
     </div>
 
-    <footer class="footer no-print">© <span id="year"></span> Abdulrahman Aldemashki</footer>
+    <footer class="footer no-print" dir="ltr">© <span id="year"></span> <span lang="en" dir="ltr">Abdulrahman Aldemashki</span></footer>
   </main>
 
+  <script src="i18n.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
